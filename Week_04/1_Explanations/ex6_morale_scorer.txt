@@ -1,0 +1,103 @@
+WEEK 4 - EXERCISE 6: THE MORALE SCORER (CASE STUDY)
+===================================================
+Solution code: 2_Solutions\ex6_morale_scorer.py
+
+!! This exercise needs two data files from Brightspace:
+!!     data\field_notes.txt     and     data\morale_words.txt
+!! Put the "data" folder in the same folder as your .py file and run the
+!! program from there. Otherwise you get:
+!!     FileNotFoundError: [Errno 2] No such file or directory
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+This is the "sentiment analysis" idea from the lecture (the cafe reviews),
+applied to penguin station notes.
+
+field_notes.txt looks like this (first line is a header):
+    colony,note
+    North Ridge,generator broken again, crew tired and hungry
+    Seal Point,...
+
+morale_words.txt is a LEXICON: words with a score (good words are
+positive, bad words are negative):
+    tired,-0.6
+    happy,0.7
+    ...
+
+Goal: give every note a score (add up the scores of the words in it),
+then total the scores per colony and print:
+    North Ridge: 2.4
+    Seal Point: 3.8
+    Windward: 1.7
+
+
+FIRST WRITE THE PLAN (pseudo-code, 4 lines)
+-------------------------------------------
+  1. Load the lexicon into a dict   (word -> weight)
+  2. Read the notes, skipping the header
+  3. Score each note: add the weights of the words found in the lexicon
+  4. Add each score to its colony's total, then print the totals
+
+
+STEP BY STEP
+------------
+STEP 1 - lexicon into a dict
+    lexicon = {}
+    for line in open("data/morale_words.txt"):
+        parts = line.strip().split(",")    # "tired,-0.6\n" -> ["tired", "-0.6"]
+        lexicon[parts[0]] = float(parts[1])
+  .strip() removes the invisible newline at the end of each line.
+  float() is needed because everything read from a file is TEXT.
+
+STEP 2 - skip the header
+    notes_file = open("data/field_notes.txt")
+    header = notes_file.readline()     # reads line 1 and moves the bookmark
+    for line in notes_file:            # the loop now starts at line 2
+  (This is the "bookmark" idea from Week 2 and Week 3.)
+
+STEP 3 - split each line ONCE and score it
+    colony, note = line.strip().split(",", 1)
+  The ,1 means "split at the FIRST comma only". The note itself has commas
+  ("broken again, crew tired"), and we do not want those split.
+    score = 0.0
+    for word in note.lower().split():  # lowercase, then cut into words
+        if word in lexicon:
+            score = score + lexicon[word]
+
+STEP 4 - add to a per-colony total (THE COUNTING PATTERN, very common)
+    if colony in totals:
+        totals[colony] = totals[colony] + score
+    else:
+        totals[colony] = score         # first time we see this colony
+  Then print, rounded to 1 decimal:
+    for colony in totals:
+        print(f"{colony}: {round(totals[colony], 1)}")
+
+
+PART (a) - CHECK BY HAND
+------------------------
+"generator broken again, crew tired and hungry" should score -1.7.
+Open morale_words.txt, find each word of the note that appears in it,
+and add up their weights on paper. If your total is -1.7, your loop is
+right. (Words that are not in the lexicon count as 0.)
+Note: .split() keeps punctuation, so "again," with its comma does not
+match "again". That is the expected behaviour for this sheet.
+
+
+PART (b) - OPTIONAL
+-------------------
+Make your own mini lexicon. Label 5 notes as good or bad. Every word in a
+good note gets +1, and every word in a bad note gets -1. Score everything
+again and compare the colony ranking. The point: the labels are a human
+judgement, and they change the results.
+
+
+COMMON MISTAKES
+---------------
+* Forgetting float() -> the weights stay strings, and adding them gives
+  TypeError (or joins them as text).
+* Using split(",") on the note line -> too many pieces, and you get
+  ValueError: too many values to unpack.
+* Not skipping the header -> "colony" becomes a fake colony in totals.
+* Forgetting .lower() -> "Tired" does not match "tired".

@@ -1,0 +1,77 @@
+WEEK 3 - EXERCISE 6 (STARRED): ONE COLONY'S FILE
+================================================
+Solution code: 2_Solutions\ex6_colony_extract.py
+(Starred = extra. Needs data\field_notes.txt from Brightspace.)
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+A program that takes 2 ARGUMENTS from the terminal: a notes file and a
+colony name. It copies every line that starts with that colony into a new
+file called <colony>.txt and reports how many it copied.
+With the wrong number of arguments, it prints a usage message instead.
+
+    $ python colony_extract.py
+    USAGE: colony_extract.py notes_file colony_name
+    $ python colony_extract.py data/field_notes.txt Windward
+    6 notes written to Windward.txt.
+    $ python colony_extract.py data/field_notes.txt "North Ridge"
+    7 notes written to North Ridge.txt.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+sys.argv = the list of words typed after "python":
+    python colony_extract.py data/field_notes.txt Windward
+    argv[0] = "colony_extract.py"    (the program itself)
+    argv[1] = "data/field_notes.txt"
+    argv[2] = "Windward"
+len(sys.argv) counts them: 3 when the user gives 2 arguments.
+
+line.startswith("Windward,") -> True if the line begins with that text.
+
+File modes: "w" = write a fresh file. Always close() it.
+
+
+STEP BY STEP
+------------
+1. Check the argument count first:
+       if len(sys.argv) != 3:
+           print("USAGE: colony_extract.py notes_file colony_name")
+       else:
+           ... the real work ...
+2. Read the two arguments into names: notes_file, colony.
+3. Open the output file: open(colony + ".txt", "w")
+4. Loop over the notes. If the line starts with colony + ",", write it and
+   add 1 to a counter.
+5. Close the output file, then print the report.
+
+
+WHY colony + ","  AND NOT JUST colony?
+--------------------------------------
+Lines look like "North Ridge,some note". Adding the comma makes sure you
+match the WHOLE colony name. It stops a colony called "North" from
+matching "North Ridge" lines.
+
+
+WHY THE QUOTES AROUND "North Ridge"?
+------------------------------------
+The terminal splits arguments at spaces. Without quotes, North and Ridge
+arrive as TWO arguments (len(sys.argv) = 4), so the program prints the
+usage message. That is correct behaviour!
+
+
+TEST EVERY BRANCH
+-----------------
+  no arguments            -> usage message
+  correct arguments       -> "6 notes written to Windward.txt."
+  unquoted two-word name  -> usage message
+
+
+COMMON MISTAKES
+---------------
+* Using sys.argv[2] without checking len first -> IndexError when the
+  user forgets an argument.
+* Forgetting out_file.close() -> the file can end up empty.
+* Writing line + "\n" -> blank lines in the output, because each line
+  already ends with \n.

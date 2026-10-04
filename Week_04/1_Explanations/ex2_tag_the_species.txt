@@ -1,0 +1,81 @@
+WEEK 4 - EXERCISE 2: TAG THE SPECIES
+====================================
+Solution code: 2_Solutions\ex2_tag_the_species.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+You get a list where every item is a pair (species, count):
+
+    census = [("adelie", 242), ("emperor", 60), ("gentoo", 120), ("chinstrap", 80)]
+
+1. Print each pair as   adelie: 242
+2. Swap two variables with  a, b = b, a  and explain it.
+3. Try to change a number inside a pair, read the error, explain it.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+A TUPLE is like a list that can NEVER change. Round brackets:
+
+    pair = ("adelie", 242)
+    pair[0]  -> "adelie"
+    pair[1]  -> 242
+
+Actually it is the COMMA that makes a tuple. The brackets are optional:
+    pair = "adelie", 242      # also a tuple
+
+UNPACKING: put a tuple's values into separate variables in one go:
+    species, count = ("adelie", 242)
+    # species is "adelie", count is 242
+
+
+STEP BY STEP
+------------
+1. Loop and unpack IN THE FOR LINE:
+
+       for species, count in census:
+           print(f"{species}: {count}")
+
+   Each time round the loop, Python takes the next tuple and splits it
+   into species and count for you. It is the same as:
+       for pair in census:
+           species = pair[0]
+           count = pair[1]
+   but shorter and easier to read.
+
+2. Swap:
+       a = 1
+       b = 2
+       a, b = b, a
+   The right side  b, a  is built FIRST, as a tuple (2, 1). Then that
+   tuple is unpacked into a and b. So a becomes 2 and b becomes 1.
+   No extra "temp" variable is needed.
+
+3. census[0][1] = 250
+   census[0] is the tuple ("adelie", 242), and [1] is the 242 inside it.
+   Python stops with:
+       TypeError: 'tuple' object does not support item assignment
+   Reason: tuples are IMMUTABLE (they cannot be changed). A census line is
+   a fact, and facts should not change by accident.
+   The solution file keeps this line as a comment, so the program does not
+   crash. To really "change" it, replace the WHOLE tuple in the list:
+       census[0] = ("adelie", 250)     # allowed: the LIST can change
+
+
+EXPECTED OUTPUT
+---------------
+adelie: 242
+emperor: 60
+gentoo: 120
+chinstrap: 80
+a = 2  b = 1
+('adelie', 250)
+
+
+COMMON MISTAKES
+---------------
+* for item in census: print(item)  prints ('adelie', 242), with the
+  brackets showing. Unpack it to get the clean format.
+* Writing ("espresso") and thinking it is a tuple. It is only a string in
+  brackets. A one-item tuple needs a comma: ("espresso",)

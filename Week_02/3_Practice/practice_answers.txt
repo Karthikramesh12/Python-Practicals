@@ -1,0 +1,106 @@
+WEEK 2 PRACTICE ANSWERS
+=======================
+(Section A and B were checked by running them in Python.)
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  9.600000000000001
+     9.60
+     The float wall from Week 1. :.2f fixes the DISPLAY.
+
+A2.  |tea   |   tea|  tea  |
+     < pushes the text left, > pushes it right, ^ puts it in the centre.
+
+A3.  |    7.50|
+     **x**
+     *^5 means: centre the text in 5 characters and fill the space with *.
+
+A4.  x is 5
+     The f-string was built when x was 5. Changing x later does not
+     reach back.
+
+A5.  ham and eggs
+     b a
+     {1} is the second argument and {0} is the first. Counting starts at 0.
+
+A6.  False True False
+
+A7.  True
+     False
+     "and" goes before "or", so the first line means
+     uni == "UCD" or (uni == "TCD" and age > 21), which is True.
+     The brackets in line 2 fix it. ALWAYS use brackets.
+
+A8.  6 5
+
+A9.  10 11
+     The n inside g is LOCAL. Calling g(n) on its own throws the result
+     away, so the outer n stays 10. g(n) inside the print returns 11.
+
+A10. 3 2
+     17 // 5 = 3 (whole times), 17 % 5 = 2 (remainder).
+
+
+SECTION B - FIND THE ERROR
+--------------------------
+B1.  TypeError: unsupported operand type(s) for -: 'int' and 'str'
+     input() always gives TEXT. Fix: year = int(input("Year you started: "))
+
+B2.  TypeError: write() argument must be str, not float
+     Fix: f.write(str(3.14))  or  f.write(f"{3.14}")
+
+B3.  NameError: name 'result' is not defined
+     result is LOCAL to area(). Fix: return it and store it:
+         def area(w, h):
+             return w * h
+         result = area(3, 4)
+         print(result)
+
+B4.  IndexError: list index out of range
+     sys.argv only holds ["greet.py"]. Fix: run  python greet.py Ana
+
+B5.  "w" wipes the file each time. Use "a" (append):
+         log = open("log.txt", "a")
+
+
+SECTION C - WRITE THE CODE (one correct way)
+--------------------------------------------
+C1.
+    name = input("Name: ")
+    birth_year = int(input("Birth year: "))
+    print(f"Hi {name}, you turn {2026 - birth_year} this year.")
+
+C2.
+    def rect_area(width, height):
+        """Area of a rectangle."""
+        return width * height
+
+    print(f"{rect_area(4, 2.5):.1f}")      # 10.0
+
+C3.
+    def min_and_sec(total_seconds):
+        """Split seconds into whole minutes and leftover seconds."""
+        return total_seconds // 60, total_seconds % 60
+
+    minutes, seconds = min_and_sec(135)
+    print(f"{minutes} min {seconds} s")    # 2 min 15 s
+
+C4.
+    import sys
+    name = sys.argv[1]
+    score = sys.argv[2]
+    results = open("results.txt", "a")
+    results.write(f"{name} {score}\n")
+    results.close()
+
+C5.
+    print(f"{'muffin':<10}{2.4:>7.2f}")
+    (10 + 7 = 17 characters wide in total. Change the widths and watch
+    how the line moves.)
+
+C6.
+    def is_teen(age):
+        """True for ages 13 to 19 inclusive."""
+        return age >= 13 and age <= 19
+    (Python also lets you write: return 13 <= age <= 19)

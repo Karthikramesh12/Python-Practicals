@@ -1,0 +1,79 @@
+START HERE - MIS41110 PYTHON PRACTICALS STUDY PACK
+==================================================
+
+HOW THIS FOLDER IS ORGANISED
+----------------------------
+One folder per week. Every week folder looks the same:
+
+  Week 0X - topic\
+     notes\            the original lecture slides, practical sheet and
+                       official solutions (PDFs)
+     1_Explanations\   one .txt per exercise: what the question means, what
+                       you need to know, step by step, common mistakes
+     2_Solutions\      one .py per exercise: the working code, with comments
+     3_Practice\       practice_questions.txt  and  practice_answers.txt
+
+  common_errors.txt    every error message you are likely to see, and how
+                       to fix each one
+
+(The .md files inside notes\ are summary notes Claude uses. You can ignore them.)
+
+
+THE WEEKS
+---------
+  Week 1  print, maths, strings, booleans, variables, types
+  Week 2  f-strings, input(), files, sys.argv, and/or/not, functions, modules
+  Week 3  if/elif/else, while, for, range(), UML activity diagrams
+  Week 4  lists, tuples, sets, dictionaries, comprehensions, matrices
+          <- THIS WEEK'S PRACTICAL: Monday 5 October.
+             There is a strike from 12:00 to 13:00. Come to the tutorial
+             at 10:00-12:00 or 15:00-17:00. (13:00-14:30 is questions only.)
+
+Each week builds on the one before, so learn them in order.
+
+
+HOW TO STUDY EACH EXERCISE (this order matters!)
+------------------------------------------------
+  1. Read the exercise in notes\MIS41110_practical_weekXX.pdf
+  2. TRY IT YOURSELF in VS Code for 10-15 minutes, even if you get stuck.
+  3. Stuck? Read 1_Explanations\exN_....txt. It explains the idea without
+     giving the code away at the top.
+  4. Try again.
+  5. Only then open 2_Solutions\exN_....py. Compare it with yours.
+  6. Close the solution and TYPE IT AGAIN FROM MEMORY.
+     (Typing it yourself sticks. Copy-paste doesn't.)
+  7. At the end of the week, do 3_Practice\practice_questions.txt, then
+     mark yourself with practice_answers.txt.
+
+Top tip: before running ANY code, say out loud what you think it will
+print. Then run it. Wrong guesses are where the learning happens. The
+exam asks "what does this print?" a lot.
+
+
+HOW TO RUN A .py FILE
+---------------------
+  1. Open the folder in VS Code (File -> Open Folder).
+  2. Open the terminal (Terminal -> New Terminal).
+  3. Move into the folder that holds the file, for example:
+         cd "Week 04 - Lists, Tuples, Sets, Dicts\2_Solutions"
+  4. Run it:
+         python ex1_colony_counts.py
+  Some programs need extra words after the file name (program arguments),
+  for example:   python ex1_pair_math.py 13 5
+  The comment at the top of each file says how to run it.
+
+
+MISSING DATA FILES
+------------------
+These exercises read files from a "data" folder that is on BRIGHTSPACE
+(it is not in this pack):
+  Week 3 - Exercise 5 and 6  -> data\field_notes.txt
+  Week 4 - Exercise 6        -> data\field_notes.txt, data\morale_words.txt
+Download the data folder and put it next to the .py file you are running.
+
+HOW TO RUN THE PYTHON SCRIPTS
+------------------
+To run the python scripts we need to run the following command
+
+   python <file_name.py>
+

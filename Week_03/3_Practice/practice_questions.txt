@@ -1,0 +1,103 @@
+WEEK 3 PRACTICE QUESTIONS - IF, WHILE, FOR, RANGE, UML
+======================================================
+Answers are in practice_answers.txt. Try first, then check.
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  x = 15
+     if x > 20:
+         print("big")
+     elif x > 10:
+         print("medium")
+     else:
+         print("small")
+
+A2.  total = 12.0
+     items = 2
+     if total > 10.0:
+         if items > 3:
+             print("D")
+     else:
+         print("E")
+
+A3.  for n in range(3):
+         print(n, end=" ")
+
+A4.  for n in range(2, 11, 4):
+         print(n, end=" ")
+
+A5.  for n in range(5, 0, -2):
+         print(n, end=" ")
+
+A6.  count = 0
+     while count < 4:
+         count = count + 1
+     print(count)
+
+A7.  count = 0
+     while count <= 4:
+         count = count + 1
+     print(count)
+
+A8.  total = 0
+     for n in range(1, 5):
+         total = total + n
+     print(total)
+
+A9.  word = "banana"
+     a_count = 0
+     for letter in word:
+         if letter == "a":
+             a_count = a_count + 1
+     print(a_count)
+
+A10. print("cat" in "concatenate", "dog" in "hotdog stand", "Hot" in "hotdog")
+
+
+SECTION B - FIND THE ERROR / BUG
+--------------------------------
+B1.  choice = input("Choose: ")
+     if choice = "1":
+         print("Weather")
+
+B2.  choice = input("Choose: ")
+     while choice != "0":
+         print("Menu")
+     (What happens when the user types 1?)
+
+B3.  age = int(input("Age: "))
+     while age < 0 and age > 120:
+         age = int(input("Age again: "))
+     (Why does this accept -5?)
+
+B4.  for n in 1234:
+         print(n)
+
+B5.  choice = input("Choose: ")
+     if choice == 1:
+         print("You chose one")
+     (Why does typing 1 print nothing?)
+
+
+SECTION C - WRITE THE CODE
+--------------------------
+C1.  Ask for a number. Print "positive", "negative" or "zero".
+
+C2.  Print the 7 times table from 7 x 1 to 7 x 10 using for and range,
+     in the format:   7 x 3 = 21
+
+C3.  Keep asking "Password: " until the user types "penguin", then print
+     "Welcome!".
+
+C4.  Sum all the even numbers from 2 to 100 (inclusive) using range with
+     a step. (The answer should be 2550.)
+
+C5.  Ask the user for numbers until they type 0 (the sentinel). Then print
+     how many numbers they entered and their total.
+
+C6.  Count how many spaces are in the sentence "The Daily Grind is open".
+
+C7.  Draw (on paper) a UML activity diagram for:
+       "Read a temperature. If it is below 0, print 'freezing',
+        otherwise print 'not freezing'. End."

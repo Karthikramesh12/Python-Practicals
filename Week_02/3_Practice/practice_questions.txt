@@ -1,0 +1,92 @@
+WEEK 2 PRACTICE QUESTIONS - F-STRINGS, INPUT, FILES, ARGV, BOOLEANS, FUNCTIONS
+==============================================================================
+Answers are in practice_answers.txt. Try first, then check.
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  price = 3.2
+     qty = 3
+     print(f"{price * qty}")
+     print(f"{price * qty:.2f}")
+
+A2.  print(f"|{'tea':<6}|{'tea':>6}|{'tea':^7}|")
+
+A3.  print(f"|{7.5:>8.2f}|")
+     print(f"{'x':*^5}")
+
+A4.  x = 5
+     msg = f"x is {x}"
+     x = 9
+     print(msg)
+
+A5.  print("{} and {}".format("ham", "eggs"))
+     print("{1} {0}".format("a", "b"))
+
+A6.  print(True and False, True or False, not (3 > 2))
+
+A7.  age = 18
+     uni = "UCD"
+     print(uni == "UCD" or uni == "TCD" and age > 21)
+     print((uni == "UCD" or uni == "TCD") and age > 21)
+
+A8.  def f(a, b):
+         return a * 2, b + 1
+     p, q = f(3, 4)
+     print(p, q)
+
+A9.  def g(n):
+         n = n + 1
+         return n
+     n = 10
+     g(n)
+     print(n, g(n))
+
+A10. print(17 // 5, 17 % 5)
+
+
+SECTION B - FIND THE ERROR
+--------------------------
+B1.  year = input("Year you started: ")
+     print(2026 - year)
+
+B2.  f = open("scores.txt", "w")
+     f.write(3.14)
+     f.close()
+
+B3.  def area(w, h):
+         result = w * h
+     area(3, 4)
+     print(result)
+
+B4.  You run  python greet.py  (with no arguments). The file contains:
+         import sys
+         print("Hello", sys.argv[1])
+
+B5.  You want to ADD a line to log.txt every day, but each day the old
+     lines disappear. You wrote:
+         log = open("log.txt", "w")
+
+
+SECTION C - WRITE THE CODE (no if, no loops - this is Week 2!)
+--------------------------------------------------------------
+C1.  Ask the user for their name and birth year with input(). Print
+     "Hi Ana, you turn 26 this year." (use 2026 as the current year).
+
+C2.  Write a function rect_area(width, height) that RETURNS the area.
+     Call it with 4 and 2.5 and print the result to 1 decimal place.
+
+C3.  Write a function min_and_sec(total_seconds) that returns TWO values:
+     whole minutes and leftover seconds. 135 -> 2, 15.
+     Print "2 min 15 s".
+
+C4.  Write a program that takes a name and a score from the program
+     arguments (python result.py Ana 87.5) and APPENDS the line
+     "Ana 87.5" to results.txt.
+
+C5.  Print this receipt line exactly (item left-aligned in 10 characters,
+     price right-aligned in 7 characters with 2 decimals):
+         muffin       2.40
+
+C6.  Write is_teen(age) that returns True if age is from 13 to 19,
+     inclusive. Do NOT use if.

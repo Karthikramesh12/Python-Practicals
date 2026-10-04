@@ -1,0 +1,53 @@
+WEEK 1 - EXERCISE 0: THE SETUP GATE (DO THIS FIRST)
+===================================================
+Solution code: 2_Solutions\ex0_setup_gate.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Prove your computer can run Python. There are 3 steps.
+
+
+STEP 1 - THE PYTHON SHELL
+-------------------------
+Open a terminal (VS Code menu: Terminal -> New Terminal) and type:
+    python            (on Mac: python3)
+You should see  >>>  which means Python is waiting for you. Type:
+    >>> 2 + 2
+    4
+    >>> quit()
+The >>> shell runs ONE line at a time. It is good for quick tests.
+
+
+STEP 2 - RUN A FILE
+-------------------
+In VS Code, make a new file called  hello_farpoint.py  containing:
+    print("Farpoint Station: 44 crew, 4 penguin species, 1 very long night.")
+Save it, then type this in the terminal:
+    python hello_farpoint.py
+
+If you see "can't open file", the terminal is in the WRONG FOLDER.
+  - VS Code's own terminal usually opens in the right place.
+  - Or move there with cd, for example:  cd "E:\Tanu's Practicals"
+  - The command  dir  (Windows) lists the files in the current folder.
+
+
+STEP 3 - FIX THE BUG
+--------------------
+    print("Radio check: all stations, please respond)
+Run it and Python says:
+    SyntaxError: unterminated string literal
+It shows a ^ under the opening quote. The string has an opening " but no
+closing ". Fix:
+    print("Radio check: all stations, please respond")
+
+THE HABIT TO BUILD: READ THE ERROR MESSAGE. It tells you WHAT is wrong
+(unterminated string) and WHERE (the line number). Don't guess.
+
+
+COMMON MISTAKES
+---------------
+* Typing "python hello_farpoint.py" INSIDE the >>> shell. Type quit()
+  first. That command belongs in the normal terminal.
+* Print("...") with a capital P -> NameError. Python is case-sensitive.
+* Mixing quote types: print('hello") -> SyntaxError.

@@ -1,0 +1,93 @@
+WEEK 3 - EXERCISE 1: DRAW BEFORE YOU CODE (UML ACTIVITY DIAGRAM)
+================================================================
+Runnable version of the code: 2_Solutions\ex1_ration_policy.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+You are NOT writing code here. You get code and must DRAW its flow as a
+UML activity diagram, on paper or in any drawing tool.
+
+    crew = int(input("Crew on station: "))
+    while crew != 0:
+        if crew > 40:
+            boxes = 3
+        elif crew > 20:
+            boxes = 2
+        else:
+            boxes = 1
+        print(f"Open {boxes} ration boxes.")
+        crew = int(input("Crew on station: "))
+
+
+THE 5 OFFICIAL SYMBOLS (learn these - the exam uses them)
+--------------------------------------------------------
+   (filled black dot)       START
+   (rounded rectangle)      ACTION   - something the program does
+   < diamond >              DECISION - a yes/no question
+   (dot inside a ring)      END
+   ------->                 ARROW    - the flow. Label the arrows that
+                                       leave a diamond with yes / no.
+
+
+HOW TO BUILD IT
+---------------
+Go through the code line by line:
+  - an input or calculation    -> action box
+  - while / if / elif          -> diamond
+  - the end of a while body    -> arrow going BACK UP to the while diamond
+  - leaving the while          -> arrow to the END
+
+
+THE ANSWER (drawn with text characters)
+---------------------------------------
+
+           (*)  START
+            |
+            v
+     +-------------+
+     |  read crew  |
+     +-------------+
+            |
+            v
+  +---->< crew != 0 ? >------ no -----> (@) END
+  |         |
+  |        yes
+  |         v
+  |    < crew > 40 ? >---- yes ---> [ boxes = 3 ]----+
+  |         |                                        |
+  |        no                                        |
+  |         v                                        |
+  |    < crew > 20 ? >---- yes ---> [ boxes = 2 ]----+
+  |         |                                        |
+  |        no                                        |
+  |         v                                        |
+  |    [ boxes = 1 ]                                 |
+  |         |                                        |
+  |         v                                        |
+  |  [ print boxes, then read crew ] <---------------+
+  |         |
+  +---------+   (loop back to the first diamond)
+
+Notice there is only ONE "print" box. All three branches flow into it.
+
+
+PART (a) - WHAT DOES THE DIAGRAM SHOW THAT THE CODE HIDES?
+----------------------------------------------------------
+Model answer: The diagram shows the FLOW, meaning every path a run can
+take and that the loop always returns to the same decision, all at once.
+The code only shows it one line at a time.
+
+
+EXTRA (preview, not needed yet)
+-------------------------------
+A "continue" statement (Week 5) is drawn as one more arrow going straight
+back to the loop's decision diamond. It does not get a new box.
+
+
+COMMON MISTAKES
+---------------
+* Using a rectangle for a decision. Decisions are DIAMONDS.
+* Forgetting the yes/no labels on the arrows that leave a diamond.
+* Forgetting the loop-back arrow. Without it, the diagram is not a loop.
+* Forgetting the END node.

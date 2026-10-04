@@ -1,0 +1,78 @@
+WEEK 2 - EXERCISE 1: ARGUMENTS MATH
+===================================
+Solution code: 2_Solutions\ex1_pair_math.py
+Rule this week: no "if" and no loops yet. Everything runs top to bottom.
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Write pair_math.py. The user gives two numbers when RUNNING the program:
+    python pair_math.py 13 5
+and it prints:
+    13.0 + 5.0 = 18.0
+    13.0 - 5.0 = 8.0
+    13.0 * 5.0 = 65.0
+    13.0 / 5.0 = 2.6
+    13.0 ** 5.0 = 371293.0
+    Big pair (both over 10)? False
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+1) PROGRAM ARGUMENTS (sys.argv)
+   Words typed after the program name arrive in a list called sys.argv:
+       python pair_math.py 13 5
+       sys.argv[0] = "pair_math.py"   (the program's own name)
+       sys.argv[1] = "13"
+       sys.argv[2] = "5"
+   They are always TEXT. Convert them: float(sys.argv[1]).
+   You need  import sys  at the top.
+
+2) F-STRINGS
+   Put f before the quotes and any expression inside { }:
+       print(f"{a} + {b} = {a + b}")
+   This replaces Week 1's str(a) + " + " + str(b) ... gluing.
+
+3) BOOLEAN WITH "and"
+   a > 10.0 and b > 10.0   -> True only if BOTH are true.
+
+
+STEP BY STEP
+------------
+    import sys
+    a = float(sys.argv[1])
+    b = float(sys.argv[2])
+    print(f"{a} + {b} = {a + b}")
+    ... (same for - * / **)
+    big_pair = a > 10.0 and b > 10.0
+    print(f"Big pair (both over 10)? {big_pair}")
+
+Why do the numbers print as 13.0? Because we used float(), and floats
+always show a decimal point.
+
+
+ANSWERS TO THE SUB-QUESTIONS
+----------------------------
+(a) Try  python pair_math.py 20 4  -> 24.0, 16.0, 80.0, 5.0 ... and True.
+(b) Done with f-strings.
+(c) sys.argv[0] is the program's own name, so the real arguments start
+    at [1] and [2].
+(d) 13 > 10 is True, but 5 > 10 is False, and "and" needs both, so the
+    answer is False. We can COMPUTE this answer but cannot ACT on it
+    (for example, print something different) until "if" in Week 3.
+
+
+HOW TO RUN IT
+-------------
+In the VS Code terminal, in the right folder:
+    python ex1_pair_math.py 13 5
+Pressing the "Run" button gives no arguments, so you get:
+    IndexError: list index out of range
+
+
+COMMON MISTAKES
+---------------
+* Forgetting float() -> "13" + "5" gives "135" (text gets joined), and
+  - gives TypeError.
+* Using sys.argv[0] as the first number -> it is the program name.
+* Forgetting "import sys" -> NameError: name 'sys' is not defined.

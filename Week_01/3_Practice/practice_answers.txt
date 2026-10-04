@@ -1,0 +1,100 @@
+WEEK 1 PRACTICE ANSWERS
+=======================
+(Section A and B were checked by running them in Python.)
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  4 24 512 -4
+     10 - 6 = 4 | 8 * 3 = 24 | ** works RIGHT to left: 3**2 = 9, then
+     2**9 = 512 | -2 ** 2 means -(2**2) = -4, because ** goes before the minus.
+
+A2.  3.0 4 1 <class 'float'>
+     / always gives a float (3.0, not 3).
+
+A3.  hahaha 5 55 10
+     "5" + "5" JOINS text. 5 + 5 ADDS numbers.
+
+A4.  False False True True False
+     Zero and empty are False. Everything else is True, even the text
+     "False" and even -1.
+
+A5.  3 1
+     True = 1 and False = 0.
+
+A6.  20
+     y was calculated when x was 2. Changing x later does not change y.
+
+A7.  7 3.0 2.5
+     int() CHOPS off the decimals (it does not round): 7.9 becomes 7.
+
+A8.  0.30000000000000004
+     The float wall.
+
+A9.  <class 'str'> <class 'float'> <class 'int'> <class 'bool'>
+     "3.0" has quotes, so it is TEXT.
+
+A10. Line1
+     Line2
+     Same line
+     \n starts a new line. end=" " makes the next print continue on the
+     same line.
+
+
+SECTION B - FIND THE ERROR
+--------------------------
+B1.  TypeError: can only concatenate str (not "int") to str
+     Fix: print("I am " + str(age) + " years old")
+
+B2.  ZeroDivisionError: division by zero
+     You cannot divide by 0. Make sure the divisor is not 0.
+
+B3.  NameError: name 'true' is not defined
+     Fix: True with a capital T. Python is case-sensitive.
+
+B4.  NameError: name 'Print' is not defined
+     Fix: print in lowercase.
+
+B5.  ValueError: invalid literal for int() with base 10: '3.5'
+     int() cannot read text that has a decimal point.
+     Fix: float("3.5"), or int(float("3.5")) to get 3.
+
+B6.  SyntaxError. The ' inside It's ends the string early.
+     Fix: print("It's sunny")  or  print('It\'s sunny')
+
+
+SECTION C - WRITE THE CODE (one correct way)
+--------------------------------------------
+C1.
+    name = "Ana"
+    age = 20
+    print("My name is " + name + " and I am " + str(age) + " years old.")
+
+C2.
+    price = 3.20
+    quantity = 4
+    print(price * quantity)
+    It prints 12.8 here, but other quantities show the float wall
+    (3.20 * 3 gives 9.600000000000001). Floats are stored in binary, so
+    they are approximate. Formatting fixes the display in Week 2.
+
+C3.
+    print("-" * 20 + "\nMENU\n" + "-" * 20)
+
+C4.
+    seconds = 200
+    print(seconds // 60)     # 3  whole minutes
+    print(seconds % 60)      # 20 leftover seconds
+
+C5.
+    celsius = 25
+    print(celsius * 9 / 5 + 32)    # 77.0
+
+C6.
+    a) Machine code is binary instructions the CPU runs directly. Assembly
+       uses short words (like JMP) that are translated 1-to-1 into machine
+       code. A high-level language (like Python) is human-readable and
+       gets translated by a compiler or interpreter.
+    b) A sequence of character codes (numbers, like ASCII: "H" = 72).
+    c) 0.1 has no exact binary form, so floats carry tiny errors that add
+       up and show in the result.

@@ -1,0 +1,56 @@
+WEEK 2 - EXERCISE 3 (STARRED): READ THE ROSTER BACK
+===================================================
+Solution code: 2_Solutions\ex3_crew_list.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Write crew_list.py. It takes the same file name and prints the file
+under a header:
+    $ python crew_list.py crew.txt
+    Crew on file 'crew.txt':
+    Vera Lindqvist glaciologist
+    Tom Ekwueme cook
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+    f = open(filename, "r")     # "r" = read
+    contents = f.read()         # the WHOLE file as one string
+    f.close()
+
+    f.readline()                # reads just ONE line (moves a "bookmark")
+
+print() normally adds a new line at the end. print(x, end="") adds
+nothing.
+
+
+STEP BY STEP
+------------
+    import sys
+    filename = sys.argv[1]
+    crew_file = open(filename, "r")
+    contents = crew_file.read()
+    crew_file.close()
+    print(f"Crew on file '{filename}':")
+    print(contents, end="")
+
+Why end=""? The file's last line already ends with \n. A normal print
+would add a second \n, which leaves an empty line at the end.
+
+Notice the single quotes '...' INSIDE the double-quoted f-string. That is
+how you print quote marks without escaping.
+
+
+PART (a) - WHICH MODE AND WHY?
+------------------------------
+crew_add.py needed "a" (append: add to the end, keep what is there).
+crew_list.py needs "r" (read only).
+Opening with "w" would EMPTY the file before you read anything!
+
+
+COMMON MISTAKES
+---------------
+* print(crew_file) prints something like <_io.TextIOWrapper ...>, not the
+  text. open() gives a file OBJECT, so you must call .read().
+* The file does not exist yet -> FileNotFoundError. Run crew_add first.

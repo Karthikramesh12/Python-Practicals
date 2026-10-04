@@ -1,0 +1,114 @@
+WEEK 4 PRACTICE QUESTIONS - LISTS, TUPLES, SETS, DICTS
+======================================================
+Answers are in practice_answers.txt. Do not peek until you have tried!
+Section A: predict without running, then check in Python.
+Section B: find the error. Section C: write the code.
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  drinks = ["latte", "tea", "mocha", "espresso"]
+     print(drinks[1], drinks[-2])
+
+A2.  drinks = ["latte", "tea", "mocha", "espresso"]
+     print(drinks[1:3])
+     print(drinks[:2])
+     print(drinks[2:])
+
+A3.  word = "penguin"
+     print(word[0:3], word[-1], word[::-1])
+
+A4.  nums = [5, 2, 8]
+     nums.append(1)
+     last = nums.pop()
+     print(nums, last)
+
+A5.  nums = [1, 2, 3]
+     for n in nums:
+         n = n * 10
+     print(nums)
+
+A6.  nums = [1, 2, 3]
+     for i in range(len(nums)):
+         nums[i] = nums[i] * 10
+     print(nums)
+
+A7.  print([x * x for x in range(4)])
+     print([x for x in range(10) if x % 3 == 0])
+
+A8.  a = {1, 2, 3, 4}
+     b = {3, 4, 5}
+     print(a & b)
+     print(a - b)
+     print(len(a | b))
+
+A9.  s = {"tom", "tom", "ana"}
+     print(len(s))
+
+A10. stock = {"tea": 5, "milk": 2}
+     stock["tea"] = stock["tea"] - 1
+     stock["sugar"] = 9
+     print(stock)
+     print(sum(stock.values()))
+
+A11. grid = [[1, 2, 3],
+             [4, 5, 6]]
+     print(grid[1][0], grid[0][2], len(grid))
+
+A12. x, y = 3, 7
+     x, y = y, x
+     print(x, y)
+
+A13. print("a,b,c".split(","))
+     print("-".join(["x", "y", "z"]))
+
+
+SECTION B - FIND THE ERROR (what error, and how do you fix it?)
+---------------------------------------------------------------
+B1.  colours = ["red", "green", "blue"]
+     print(colours[3])
+
+B2.  point = (4, 5)
+     point[0] = 10
+
+B3.  prices = {"tea": 2.2, "latte": 3.2}
+     print(prices["coffee"])
+
+B4.  mixed = ["latte", 3.20]
+     mixed.sort()
+
+B5.  queue = ["ana", "bob"]
+     queue.remove("cat")
+
+B6.  names = {"ana", "bob"}
+     print(names[0])
+
+
+SECTION C - WRITE THE CODE
+--------------------------
+C1.  Given scores = [55, 72, 90, 38, 66], print the highest, the lowest,
+     and the average (total divided by how many).
+
+C2.  Given words = ["ice", "snow", "ice", "wind", "snow", "ice"], build a
+     dict that counts each word, using a for loop and the counting
+     pattern. Expected: {'ice': 3, 'snow': 2, 'wind': 1}
+
+C3.  Given temps = [-3, 4, -10, 2, 0], use ONE list comprehension to make
+     a list of only the negative temperatures.
+
+C4.  Write a function biggest_name(names, ages) that returns the name of
+     the OLDEST person (parallel lists, track the index).
+     biggest_name(["ana", "bob", "cy"], [20, 41, 33]) -> "bob"
+
+C5.  Two sets:  python_class = {"ana", "bob", "cy"}
+                excel_class  = {"bob", "dee"}
+     Print who takes both, who takes only Python, and everybody.
+
+C6.  Given grid = [[2, 4], [6, 8], [1, 3]], print the total of every
+     number in the grid using nested for loops.
+
+C7.  (Exam style) Which structure would you use, and why?
+     a) The order customers arrive in a queue
+     b) A student number -> student name lookup
+     c) The distinct countries visitors came from
+     d) A GPS point (latitude, longitude) that must not change

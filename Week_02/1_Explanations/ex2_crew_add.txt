@@ -1,0 +1,51 @@
+WEEK 2 - EXERCISE 2: SIGN THE CREW IN
+=====================================
+Solution code: 2_Solutions\ex2_crew_add.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Write crew_add.py. Each time you run it:
+  - the FILE NAME comes as a program argument (python crew_add.py crew.txt)
+  - it asks for a Name and a Role with input()
+  - it ADDS one line "Name Role" to the end of that file
+Run it twice, and the file has two lines.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+input("Name: ") shows the prompt, waits for typing, and returns TEXT.
+
+Files:
+    f = open("crew.txt", "a")   # open for APPEND
+    f.write("some text\n")      # write() takes TEXT only; \n = new line
+    f.close()                   # close when done
+
+File modes:
+    "r"  read (the default)
+    "w"  write: starts the file FRESH and DELETES what was there
+    "a"  append: adds to the END and keeps what was there
+
+
+STEP BY STEP
+------------
+    import sys
+    filename = sys.argv[1]           # e.g. "crew.txt"
+    name = input("Name: ")
+    role = input("Role: ")
+    crew_file = open(filename, "a")
+    crew_file.write(name + " " + role + "\n")
+    crew_file.close()
+
+Why "a" and not "w"? With "w", the second run would ERASE Vera and leave
+only Tom. "a" keeps the history.
+Why "\n"? Without it, both crew members end up on ONE line:
+"Vera Lindqvist glaciologistTom Ekwueme cook".
+
+
+COMMON MISTAKES
+---------------
+* Using "w" -> only the last person survives.
+* write(name, role) -> TypeError. write() takes ONE string, so join the
+  parts with +.
+* Forgetting close() -> the text may never reach the file.

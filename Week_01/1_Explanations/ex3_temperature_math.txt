@@ -1,0 +1,43 @@
+WEEK 1 - EXERCISE 3: TEMPERATURE MATH (THE "FLOAT WALL")
+========================================================
+Solution code: 2_Solutions\ex3_temperature_math.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Three readings: -17.1, -17.1, -17.1
+1. Print their sum, and look closely.
+2. In a comment, explain WHY the sum is not exactly -51.3.
+3. Print the average, and the Fahrenheit value (9 / 5) * (-17.1) + 32.
+
+
+WHAT HAPPENS
+------------
+    print(t1 + t2 + t3)        -> -51.300000000000004    (!!)
+    print((t1+t2+t3) / 3)      -> -17.1                  (clean again)
+    print((9 / 5) * t1 + 32)   -> 1.2199999999999953     (another tiny error)
+
+
+WHY? (THIS IS AN EXAM FAVOURITE - LEARN THE ONE-SENTENCE ANSWER)
+---------------------------------------------------------------
+Computers store numbers in BINARY (0s and 1s). Some decimals, like 0.1,
+have NO exact binary form, the same way 1/3 = 0.3333... never ends in
+decimal. So the computer stores a value that is very slightly off, and
+when you add several of them, the tiny errors become visible.
+
+ONE-SENTENCE ANSWER:
+  "Floats are stored in binary, and 0.1 (so 17.1 too) has no exact binary
+   form, so tiny representation errors add up."
+
+Famous example:  0.1 + 0.1 + 0.1  ->  0.30000000000000004
+
+Sometimes the errors CANCEL, which is why the average prints a clean -17.1.
+You cannot predict when, so never rely on the last digits of a float.
+(Week 2 fixes the DISPLAY with formatting:  f"{x:.2f}" -> -51.30)
+
+
+COMMON MISTAKES
+---------------
+* Thinking your code is wrong. It is not: this is how floats work.
+* Writing an explanation like "Python is bad at maths". The real reason
+  is binary storage.

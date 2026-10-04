@@ -1,0 +1,63 @@
+WEEK 3 - EXERCISE 4: FOR AND RANGE() DRILLS
+===========================================
+Solution code: 2_Solutions\ex4_for_range_drills.py
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+for variable in sequence:
+    body       <- runs once for EACH item, and variable takes each value
+
+range() makes a sequence of numbers. The END number is NEVER included:
+    range(5)          -> 0 1 2 3 4
+    range(1, 5)       -> 1 2 3 4
+    range(0, 10, 3)   -> 0 3 6 9          (the third number is the step)
+    range(5, 0, -1)   -> 5 4 3 2 1        (a negative step counts down)
+
+print(x, end=" ")  prints x followed by a space instead of a new line,
+so the next print continues on the SAME line.
+
+
+DRILL 1 - COUNTDOWN 10 9 8 ... 1 LIFT
+-------------------------------------
+    for number in range(10, 0, -1):
+        print(number, end=" ")
+    print("LIFT")
+Why range(10, 0, -1)? Start at 10, count down by 1, and stop BEFORE 0,
+so the last number is 1.
+Output:  10 9 8 7 6 5 4 3 2 1 LIFT
+
+
+DRILL 2 - 30 DASHES WITH A LOOP
+-------------------------------
+    for n in range(30):
+        print("-", end="")
+    print()
+range(30) repeats 30 times. end="" means nothing goes between the dashes.
+The final print() ends the line. (In real life you would write "-" * 30,
+but today the loop is the point.)
+
+
+DRILL 3 - COUNT VOWELS IN "Farpoint"
+------------------------------------
+    vowels = 0
+    for letter in "Farpoint":
+        if letter in "aeiou":
+            vowels = vowels + 1
+    print(vowels)
+A string is a sequence, so "for" visits each letter: F a r p o i n t.
+"letter in 'aeiou'" checks whether that letter is one of the vowels.
+The vowels found are a, o, i, so it prints 3.
+(The F is a capital and is not a vowel anyway.)
+
+This is the COUNTER pattern:
+    start at 0  ->  loop  ->  if the item matches: add 1  ->  print after the loop
+
+
+COMMON MISTAKES
+---------------
+* range(10, 1, -1) stops at 2, not 1. The end is never included.
+* range(10, 0) with no step -> empty! It counts UP from 10 and stops at 0
+  straight away.
+* Putting print(vowels) INSIDE the loop -> it prints after every letter.
+* Putting vowels = 0 INSIDE the loop -> it resets every time.

@@ -1,0 +1,72 @@
+WEEK 1 PRACTICE QUESTIONS - PRINT, MATHS, STRINGS, BOOLEANS, VARIABLES, TYPES
+=============================================================================
+Answers are in practice_answers.txt. Try first, then check.
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  print(10 - 2 * 3, (10 - 2) * 3, 2 ** 3 ** 2, -2 ** 2)
+
+A2.  print(9 / 3, 9 // 2, 9 % 4, type(9 / 3))
+
+A3.  print("ha" * 3, len("Grind"), "5" + "5", 5 + 5)
+
+A4.  print(bool(0), bool(""), bool("False"), bool(-1), bool(0.0))
+
+A5.  print(True * 3, False + 1)
+
+A6.  x = 2
+     y = x * 10
+     x = 100
+     print(y)
+
+A7.  print(int(7.9), float(3), str(2.50))
+
+A8.  print(0.1 + 0.2)
+
+A9.  print(type("3.0"), type(3.0), type(3), type(True))
+
+A10. print("Line1\nLine2")
+     print("Same", end=" ")
+     print("line")
+
+
+SECTION B - FIND THE ERROR (name the error and fix it)
+------------------------------------------------------
+B1.  age = 20
+     print("I am " + age + " years old")
+
+B2.  print(10 / 0)
+
+B3.  is_open = true
+
+B4.  Print("hello")
+
+B5.  print(int("3.5"))
+
+B6.  print('It's sunny')
+
+
+SECTION C - WRITE THE CODE
+--------------------------
+C1.  Store your name and age in variables, and print:
+         My name is Ana and I am 20 years old.
+     (Week 1 style: use str() and +.)
+
+C2.  A coffee costs 3.20. Store the price and a quantity of 4, and print
+     the total. What do you see, and why?
+
+C3.  Using ONE print and "*", print a line of 20 dashes, then the word
+     MENU on the next line, then 20 more dashes.
+
+C4.  Given seconds = 200, print how many whole minutes and how many
+     leftover seconds there are (use // and %). Expected: 3 and 20.
+
+C5.  Store a temperature in Celsius (25) and print it in Fahrenheit with
+     F = C * 9 / 5 + 32.
+
+C6.  (Theory, exam style) In one sentence each:
+     a) What is the difference between machine code, assembly and a
+        high-level language?
+     b) What is a string "underneath"?
+     c) Why does 0.1 + 0.1 + 0.1 not print 0.3?

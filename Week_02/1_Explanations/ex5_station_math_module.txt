@@ -1,0 +1,77 @@
+WEEK 2 - EXERCISE 5: THE STATION MATH MODULE
+============================================
+Solution code: 2_Solutions\ex5_station_module\station_math.py
+               2_Solutions\ex5_station_module\tonight.py
+(Both files must be in the SAME folder. Run tonight.py.)
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Two files:
+1. station_math.py - a MODULE holding 4 functions:
+     c_to_f(celsius)            -> Fahrenheit
+     wind_chill(temp_c, wind_kmh) -> the "feels like" temperature
+     split_shift(hours)         -> TWO values: full 4-hour watches, leftover hours
+     is_freezing(celsius)       -> True or False
+2. tonight.py - imports the module and prints:
+     Outside: -17.1 C = 1.22 F
+     Freezing: True
+     Feels like: -29.6 C in the wind
+     Watches: 2 full, 3 hours spare
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+FUNCTION = a named, reusable piece of code:
+    def c_to_f(celsius):              # def, name, (parameters), colon
+        return (9 / 5) * celsius + 32 # 4 spaces of indentation; return = hand back
+Call it:  c_to_f(-17.1)  -> 1.22...
+
+RETURNING TWO VALUES: separate them with a comma, and unpack them:
+    def split_shift(hours):
+        return hours // 4, hours % 4
+    watches, spare = split_shift(11)    # watches = 2, spare = 3
+  (// is whole-number division: 11 // 4 = 2.  % is the remainder: 11 % 4 = 3.)
+
+A BOOLEAN WITHOUT "if":
+    def is_freezing(celsius):
+        return celsius < 0          # a comparison IS already True or False
+
+MODULE = a .py file you import. Use its functions with  module.function():
+    import station_math              # file name WITHOUT .py
+    station_math.c_to_f(-17.1)
+
+
+STEP BY STEP FOR tonight.py
+---------------------------
+    import station_math
+    outside = -17.1
+    wind = 35.0
+    duty_hours = 11
+    watches, spare = station_math.split_shift(duty_hours)
+    print(f"Outside: {outside} C = {station_math.c_to_f(outside):.2f} F")
+    print(f"Freezing: {station_math.is_freezing(outside)}")
+    print(f"Feels like: {station_math.wind_chill(outside, wind):.1f} C in the wind")
+    print(f"Watches: {watches} full, {spare} hours spare")
+
+Notice how :.2f and :.1f round the DISPLAY: 1.22 and -29.6.
+
+
+ANSWERS TO THE SUB-QUESTIONS
+----------------------------
+(a) tonight.py only calls the functions by NAME. If you improve what
+    happens inside a function, the calling side does not change. That is
+    the whole point of a module.
+(b) No. A variable created inside wind_chill is LOCAL. It only exists
+    while the function runs and disappears when it returns. Only the
+    RETURNED value comes back. (This idea is called SCOPE.)
+
+
+COMMON MISTAKES
+---------------
+* import station_math.py -> error. Leave out the .py.
+* The files are in different folders -> ModuleNotFoundError.
+* print() instead of return inside a function -> the caller gets None.
+* Forgetting the indentation under def -> IndentationError.
+* Calling c_to_f(outside) without "station_math." -> NameError (when you
+  used "import station_math").

@@ -1,0 +1,47 @@
+WEEK 1 - EXERCISE 4: PREDICT, THEN RUN
+======================================
+Solution code: 2_Solutions\ex4_predict_then_run.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+For each line, WRITE YOUR GUESS FIRST (as a # comment), then run it.
+Predicting before running is THE best way to learn. It is also exactly
+what exam "state the output" questions ask.
+
+
+ORDER OF OPERATIONS (PRECEDENCE), HIGHEST FIRST
+-----------------------------------------------
+    1.  ( )           brackets
+    2.  **            power
+    3.  *  /  //  %   multiply / divide / floor divide / remainder
+    4.  +  -          add / subtract
+When in doubt, use brackets. They cost nothing.
+
+
+EACH LINE EXPLAINED
+-------------------
+print(2 + 3 * 4)          14     * first: 3*4 = 12, then 2 + 12
+print((2 + 3) * 4)        20     brackets first: 5 * 4
+print(3 * 2 ** 2)         12     ** first: 2**2 = 4, then 3 * 4
+print(7 // 2)             3      7 / 2 = 3.5, and // keeps only the whole part
+print(7 % 2)              1      the remainder of 7 / 2 (7 = 3*2 + 1)
+print(True + True)        2      True counts as 1, False as 0
+print(str(3) + str(0.5))  30.5   "3" + "0.5" are JOINED as text -> "30.5"
+print(int("13") + 5)      18     int() turns the text "13" into the number 13
+print("13" + str(5))      135    "13" + "5" JOINED -> "135"
+
+
+ANSWER (a): WHICH TWO GIVE A STRING?
+------------------------------------
+str(3) + str(0.5)  ->  "30.5"
+"13" + str(5)      ->  "135"
+Both LOOK like numbers but are text, because + on two strings JOINS them.
+That is the trap.
+
+
+EXTRA TIPS
+----------
+* % is the even/odd test: n % 2 is 0 for even numbers and 1 for odd.
+* bool("False") is True! Any non-empty text is True. Only 0, 0.0 and ""
+  (empty) are False. A classic exam trick.

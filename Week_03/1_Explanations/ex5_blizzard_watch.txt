@@ -1,0 +1,52 @@
+WEEK 3 - EXERCISE 5: BLIZZARD WATCH
+===================================
+Solution code: 2_Solutions\ex5_blizzard_watch.py
+
+!! Needs data\field_notes.txt from Brightspace. Put the "data" folder next
+!! to your program and run the program from that folder.
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+field_notes.txt has one note per line, and the first line is a header.
+Count how many lines contain the word "blizzard", then print:
+    3 blizzard notes this season.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+A FILE is a sequence of lines, so "for" can go through it line by line:
+    for line in open("data/field_notes.txt"):
+        ...           <- line is one line of the file (text)
+
+"in" also checks whether a piece of text is inside other text:
+    "blizzard" in "huge blizzard today"   -> True
+
+
+STEP BY STEP
+------------
+    notes = 0                                   # counter
+    for line in open("data/field_notes.txt"):   # each line
+        if "blizzard" in line:                  # does it mention blizzard?
+            notes = notes + 1                   # count it
+    print(f"{notes} blizzard notes this season.")
+
+Same counter pattern as Exercise 4, but looping over a file this time.
+
+
+PART (a) - THE HEADER LINE
+--------------------------
+Does reading the header change the count? NO, because the header does not
+contain "blizzard".
+When WOULD it? If the header contained the word you are searching for
+(for example, a column named "blizzard_flag"). That is why skipping the
+header on purpose is the good habit, rather than relying on luck.
+
+
+COMMON MISTAKES
+---------------
+* FileNotFoundError -> the data folder is not where Python is running.
+  In the VS Code terminal, cd into the folder that contains "data".
+* "Blizzard" with a capital B does not match "blizzard". (If needed, use
+  line.lower(). The sheet's answer, 3, uses the plain check.)
+* Printing inside the loop -> many lines instead of one.

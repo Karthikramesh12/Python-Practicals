@@ -1,0 +1,69 @@
+WEEK 4 - EXERCISE 4: THE SUPPLY LEDGER
+======================================
+Solution code: 2_Solutions\ex4_supply_ledger.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+A dictionary of supplies and how many of each:
+    supplies = {"fuel drum": 17, "ration box": 42, "med kit": 9}
+
+1. Add "tea chest" with 12.
+2. 10 ration boxes leave, so update the count.
+3. Print all names, then all counts, then the total of the counts.
+4. Make a NEW dict with every count doubled, using a dict comprehension.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+A DICTIONARY (dict) stores KEY : VALUE pairs. You look things up by the
+key (a name), not by a position number.
+
+    supplies["med kit"]            -> 9        look up
+    supplies["tea chest"] = 12     add a new key
+    supplies["med kit"] = 10       replace the value of an existing key
+    "med kit" in supplies          -> True     (checks the KEYS)
+    supplies.keys()                all the keys
+    supplies.values()              all the values
+    for item in supplies:          a loop over a dict goes over its KEYS
+
+Dict comprehension (builds a dict in one line):
+    {key_expression: value_expression for item in something}
+
+
+STEP BY STEP
+------------
+1. supplies["tea chest"] = 12
+   "tea chest" is a new key, so it is ADDED at the end.
+
+2. supplies["ration box"] = supplies["ration box"] - 10
+   Read the right side first: 42 - 10 = 32. Then store 32 back.
+   (Short form: supplies["ration box"] -= 10)
+
+3. print("Items:", *supplies.keys())
+   print("Counts:", *supplies.values())
+   print("Total:", sum(supplies.values()))
+   The * "unpacks" the keys into separate values for print, so they print
+   with spaces between them and no brackets.
+
+4. resupply_plan = {item: supplies[item] * 2 for item in supplies}
+   Read it as: "for each item in supplies, make the key item, with the
+   value supplies[item] * 2".
+
+
+EXPECTED OUTPUT
+---------------
+Items: fuel drum ration box med kit tea chest
+Counts: 17 32 9 12
+Total items on station: 70
+Resupply plan: {'fuel drum': 34, 'ration box': 64, 'med kit': 18, 'tea chest': 24}
+
+(Dicts keep the order you added keys in, so this order is predictable.)
+
+
+COMMON MISTAKES
+---------------
+* supplies["Med kit"] (capital M) -> KeyError. Keys must match exactly.
+* supplies[0] -> KeyError: 0. Dicts do not use position numbers.
+* Forgetting to store the result: supplies["ration box"] - 10 on its own
+  calculates 32 but changes nothing.

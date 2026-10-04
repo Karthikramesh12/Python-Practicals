@@ -1,0 +1,120 @@
+WEEK 3 PRACTICE ANSWERS
+=======================
+(Section A and B answers were checked by running them in Python.)
+
+
+SECTION A - PREDICT THE OUTPUT
+------------------------------
+A1.  medium
+     15 > 20 is False, then 15 > 10 is True. The first True branch wins.
+
+A2.  (nothing is printed)
+     The outer if is True (12 > 10), so we go inside it. The inner
+     items > 3 is False, and there is no else at that level. The else
+     belongs to the OUTER if, so it is skipped. (This is the "dangling
+     else" trap: the indentation decides.)
+
+A3.  0 1 2
+
+A4.  2 6 10
+     Start at 2, step 4, stop before 11.
+
+A5.  5 3 1
+
+A6.  4
+     The loop stops when 4 < 4 becomes False.
+
+A7.  5
+     With <=, the check 4 <= 4 is still True, so it adds one more time.
+
+A8.  10
+     1 + 2 + 3 + 4. range(1, 5) does not include 5.
+
+A9.  3
+
+A10. True True False
+     "in" is case-sensitive: "Hot" is not the same as "hot".
+
+
+SECTION B - FIND THE ERROR / BUG
+--------------------------------
+B1.  SyntaxError (Python suggests: "Maybe you meant '==' ...").
+     = assigns and == compares. Fix: if choice == "1":
+
+B2.  INFINITE LOOP: it prints "Menu" forever. choice never changes inside
+     the loop. Fix: put  choice = input("Choose: ")  INSIDE the loop.
+     Press Ctrl+C to escape a stuck program.
+
+B3.  A number cannot be below 0 AND above 120 at the same time, so the
+     condition is always False and the loop never runs.
+     Fix: while age < 0 or age > 120:
+
+B4.  TypeError: 'int' object is not iterable
+     A number is ONE value, not a sequence. Fix: for n in str(1234):
+
+B5.  input() gives the TEXT "1", and "1" == 1 is False.
+     Fix: compare with text, if choice == "1":  or convert with int().
+
+
+SECTION C - WRITE THE CODE (one correct way)
+--------------------------------------------
+C1.
+    number = float(input("Number: "))
+    if number > 0:
+        print("positive")
+    elif number < 0:
+        print("negative")
+    else:
+        print("zero")
+
+C2.
+    for n in range(1, 11):
+        print(f"7 x {n} = {7 * n}")
+
+C3.
+    password = input("Password: ")
+    while password != "penguin":
+        password = input("Password: ")
+    print("Welcome!")
+
+C4.
+    total = 0
+    for n in range(2, 101, 2):     # 101 so that 100 is included
+        total = total + n
+    print(total)                   # 2550
+
+C5.
+    count = 0
+    total = 0
+    number = int(input("Number (0 to stop): "))
+    while number != 0:
+        count = count + 1
+        total = total + number
+        number = int(input("Number (0 to stop): "))
+    print(f"{count} numbers, total {total}")
+
+C6.
+    spaces = 0
+    for letter in "The Daily Grind is open":
+        if letter == " ":
+            spaces = spaces + 1
+    print(spaces)                  # 4
+
+C7.
+       (*) START
+        |
+        v
+    [ read temperature ]
+        |
+        v
+    < temperature < 0 ? >--- yes ---> [ print "freezing" ] -----+
+        |                                                       |
+        no                                                      |
+        v                                                       |
+    [ print "not freezing" ]                                    |
+        |                                                       |
+        v                                                       |
+       (@) END  <-----------------------------------------------+
+
+    Check: a filled START dot, rounded action boxes, a DIAMOND for the
+    decision, yes/no labels on its arrows, and a ringed END dot.

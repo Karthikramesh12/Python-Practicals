@@ -1,0 +1,58 @@
+WEEK 4 - EXERCISE 5b (STARRED): NAME THE SMALLEST COLONY
+========================================================
+Solution code: 2_Solutions\ex5b_smallest_colony.py
+(Starred = extra. Do it if you have time.)
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Two lists that line up position by position ("parallel lists"):
+
+    colonies = ["North Ridge", "Seal Point", "Windward"]
+    counts   = [242,           60,           120]
+
+min(counts) gives 60, but you need the NAME: "Seal Point".
+Write a function smallest_colony(colonies, counts) that returns the name.
+
+
+THE TRICK: REMEMBER THE POSITION, NOT THE VALUE
+-----------------------------------------------
+If you know WHERE the smallest number is (index 1), then colonies[1]
+gives you the name, because both lists share the same positions.
+
+    best = 0                        # guess: position 0 is the smallest
+    for i in range(len(counts)):    # look at every position
+        if counts[i] < counts[best]:
+            best = i                # a smaller one! remember its position
+    return colonies[best]
+
+
+TRACE IT BY HAND (counts = [242, 60, 120])
+------------------------------------------
+  start          best = 0
+  i = 0   60? no: 242 < 242 is False       best stays 0
+  i = 1   60 < 242 is True                 best = 1
+  i = 2   120 < 60 is False                best stays 1
+  return colonies[1]  -> "Seal Point"
+
+
+TEST THE EDGE CASES (the sheet asks for these)
+----------------------------------------------
+  smallest first: [10, 60, 120]  -> "North Ridge"
+  smallest last : [242, 60, 5]   -> "Windward"
+Edge cases catch bugs. For example, starting the loop at 1 instead of 0
+is fine, but starting best at 1 would break the "smallest first" case.
+
+
+EXPECTED OUTPUT
+---------------
+Seal Point
+North Ridge
+Windward
+
+
+COMMON MISTAKES
+---------------
+* Returning counts[best] (the number) instead of colonies[best] (the name).
+* Writing print(...) inside the function instead of return. The question
+  says the function RETURNS the name.

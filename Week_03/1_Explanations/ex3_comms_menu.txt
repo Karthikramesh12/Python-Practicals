@@ -1,0 +1,56 @@
+WEEK 3 - EXERCISE 3: THE COMMS MENU
+===================================
+Solution code: 2_Solutions\ex3_comms_menu.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Build a menu that repeats until the user chooses 0:
+
+    [1] Weather  [2] Colony count  [0] Sign off
+    Choose: 1
+    Outside: -17.1 C, wind 35 km/h
+    ...
+    Choose: 5
+    Please choose 1, 2 or 0.
+    ...
+    Choose: 0
+    Farpoint signing off.
+
+The weather and the count are fixed text. The LOOP is the real exercise.
+
+
+THE MENU LOOP SHAPE (memorise this - the lecturer says you'll use it all term)
+------------------------------------------------------------------------------
+    choice = ""                      # 1. start with "not zero"
+    while choice != "0":             # 2. the sentinel: "0" means stop
+        print(the menu)              # 3. show the options
+        choice = input("Choose: ")   # 4. read the choice
+        if choice == "1":            # 5. one branch per option
+            ...
+        elif choice == "2":
+            ...
+        elif choice == "0":
+            print goodbye
+        else:                        # 6. anything else = junk
+            print("Please choose 1, 2 or 0.")
+
+
+WHY THESE DETAILS MATTER
+------------------------
+* choice = "" first: the while line needs choice to exist before it can
+  check it. "" is not "0", so the loop starts.
+* Compare with "1" (text), not 1 (number). input() always gives TEXT.
+  The check choice == 1 is never True.
+* The goodbye goes in the "0" branch. The loop then checks choice != "0",
+  which is now False, so it stops.
+* The else catches anything unexpected ("5", "hello", or just Enter).
+
+
+COMMON MISTAKES
+---------------
+* Putting the input() BEFORE the while and never again inside it ->
+  infinite loop (lecture trap #3).
+* if choice = "1":  -> SyntaxError. Use == to compare.
+* Forgetting the elif for "0". Then typing 0 also prints "Please choose..."
+  before the program stops.

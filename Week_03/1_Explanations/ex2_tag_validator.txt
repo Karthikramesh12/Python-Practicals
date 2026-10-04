@@ -1,0 +1,64 @@
+WEEK 3 - EXERCISE 2: THE TAG VALIDATOR
+======================================
+Solution code: 2_Solutions\ex2_tag_validator.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Penguin tags are numbered 1 to 500. Keep asking "Tag number:" until the
+user types a number in that range. Then print "Tag 77 logged."
+
+    Tag number: 0
+    Tags run 1-500. Try again.
+    Tag number: 612
+    Tags run 1-500. Try again.
+    Tag number: 77
+    Tag 77 logged.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+while condition:
+    body              <- repeats AS LONG AS the condition is True
+
+This is the "input validation" pattern (the lecture's "muffin rush"):
+    1. ask ONCE before the loop
+    2. while the answer is BAD:
+           complain
+           ask AGAIN (inside the loop!)
+    3. after the loop, the answer is guaranteed to be good
+
+
+STEP BY STEP
+------------
+What does "bad" mean here? Less than 1 OR more than 500:
+    tag < 1 or tag > 500
+
+    tag = int(input("Tag number: "))
+    while tag < 1 or tag > 500:
+        print("Tags run 1-500. Try again.")
+        tag = int(input("Tag number: "))
+    print(f"Tag {tag} logged.")
+
+Trace with the inputs 0, 612, 77:
+    tag = 0    -> 0 < 1 is True, so we enter the loop -> complain, ask again
+    tag = 612  -> 612 > 500 is True, so we loop again -> complain, ask again
+    tag = 77   -> both checks are False, so the loop ends -> "Tag 77 logged."
+
+
+PART (a) - WHILE OR FOR?
+------------------------
+WHILE. We repeat UNTIL a condition holds, and we cannot know in advance
+how many wrong answers will come. FOR is for a known number of steps
+(each item in a list, or 10 times).
+
+
+COMMON MISTAKES
+---------------
+* Using "and" instead of "or": tag < 1 and tag > 500 can NEVER be True,
+  so the loop never runs and every number is accepted.
+* Forgetting to ask again inside the loop -> INFINITE LOOP: it prints
+  "Try again" forever. Press Ctrl+C to stop it.
+* Forgetting int() -> TypeError, because input() gives text and you
+  cannot compare text with 1.
+* Checking with if instead of while -> it only catches ONE wrong answer.

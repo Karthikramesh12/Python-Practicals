@@ -1,0 +1,61 @@
+WEEK 4 - EXERCISE 3: WHO HAS BEEN OUT ON THE ICE?
+=================================================
+Solution code: 2_Solutions\ex3_sets_on_the_ice.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Two groups of names:
+    monday  = {"vera", "tom", "ines", "kofi"}
+    tuesday = {"tom", "kofi", "lena"}
+
+Answer 4 questions. Each answer must be ONE set expression:
+  a) everyone who went out at least once
+  b) who went out on both days
+  c) who went out on Monday only
+  d) who went out on exactly one of the two days
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+A SET is a bag of things with:
+  - no duplicates (each name appears once)
+  - no order (so no index: monday[0] gives an error)
+Curly brackets: {"vera", "tom"}
+
+The 4 set operators. Draw two overlapping circles to picture them:
+
+    monday | tuesday   UNION          everything in either circle
+    monday & tuesday   INTERSECTION   only the overlap
+    monday - tuesday   DIFFERENCE     left circle, minus the overlap
+    monday ^ tuesday   SYMMETRIC DIFF both circles, minus the overlap
+
+              MONDAY          TUESDAY
+           ( vera  ( tom   )  lena )
+           ( ines  ( kofi  )       )
+                     ^overlap^
+
+
+ANSWERS
+-------
+  a) monday | tuesday  -> {vera, tom, ines, kofi, lena}
+  b) monday & tuesday  -> {tom, kofi}
+  c) monday - tuesday  -> {vera, ines}
+  d) monday ^ tuesday  -> {vera, ines, lena}
+
+
+IMPORTANT
+---------
+Sets print in a RANDOM-LOOKING order. Your output can look like
+{'kofi', 'tom'} or {'tom', 'kofi'}. Both are correct. Check the
+contents, not the order.
+
+
+COMMON MISTAKES
+---------------
+* Using + to join sets -> TypeError. Use | instead.
+* Mixing up - and ^ :
+    -  is ONE side only (Monday but not Tuesday)
+    ^  is EITHER side, but not both
+* Remember that tuesday - monday is different from monday - tuesday:
+  it gives {lena}.

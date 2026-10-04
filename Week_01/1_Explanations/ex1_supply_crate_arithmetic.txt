@@ -1,0 +1,72 @@
+WEEK 1 - EXERCISE 1: SUPPLY-CRATE ARITHMETIC
+============================================
+Solution code: 2_Solutions\ex1_supply_crate_arithmetic.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Store a = 17 and b = 5 in variables. Then print the type of each and all
+six maths operations, USING the variables (not typing the numbers):
+    Value a is <class 'int'>
+    Value b is <class 'int'>
+    17 + 5 = 22
+    17 - 5 = 12
+    17 * 5 = 85
+    17 / 5 = 3.4
+    17 % 5 = 2
+    17 ** 5 = 1419857
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+VARIABLE = a name attached to a value:   a = 17
+
+The maths operators:
+    +   add               17 + 5  = 22
+    -   subtract          17 - 5  = 12
+    *   multiply          17 * 5  = 85
+    /   divide            17 / 5  = 3.4    (ALWAYS gives a float)
+    //  floor divide      17 // 5 = 3      (the whole part only)
+    %   remainder         17 % 5  = 2      (17 = 3*5 + 2)
+    **  power             17 ** 5 = 1419857
+
+type(x) tells you what kind of value x is: int, float, str, bool.
+
+You CANNOT join text and a number with +:
+    "17 + " + 17          -> TypeError
+    "17 + " + str(17)     -> "17 + 17"    str() turns the number into text ("17 + " + "17")
+(f-strings, which make this easier, only arrive in Week 2.)
+
+
+STEP BY STEP
+------------
+    a = 17
+    b = 5
+    print("Value a is", type(a))    # commas: print adds spaces for you
+    print(str(a) + " + " + str(b) + " = " + str(a + b))
+    ... same pattern for - * / % **
+
+Read the long line in pieces:
+    str(a)      -> "17"
+    " + "       -> " + "
+    str(b)      -> "5"
+    " = "       -> " = "
+    str(a + b)  -> "22"     (the maths happens first, then becomes text)
+All glued together: "17 + 5 = 22"
+
+
+ANSWERS
+-------
+(a) Change to a = 20 and b = 4, and every line updates by itself, because
+    everything is CALCULATED from a and b. Keep b non-zero, because
+    dividing by 0 gives ZeroDivisionError.
+(b) The / line. 17 / 5 = 3.4 is a FLOAT. True division always gives a
+    float, even 10 / 5 = 2.0. The other five lines give ints.
+
+
+COMMON MISTAKES
+---------------
+* print("17 + 5 = 22") -> typing the answer. The point is that Python
+  CALCULATES it.
+* Forgetting str() -> TypeError: can only concatenate str (not "int") to str
+* Using ^ for power. In Python, 17 ^ 5 is NOT a power. Use **.

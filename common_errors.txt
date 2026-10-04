@@ -1,0 +1,132 @@
+COMMON PYTHON ERRORS - WHAT THEY MEAN AND HOW TO FIX THEM
+=========================================================
+Golden rule: READ THE LAST LINE of the error first. It names the problem.
+The line above it shows WHERE (the file and the line number).
+
+    Traceback (most recent call last):
+      File "test.py", line 3, in <module>       <- WHERE
+        print(10 / 0)
+    ZeroDivisionError: division by zero         <- WHAT
+
+
+SyntaxError  (Python cannot even read your code)
+------------------------------------------------
+  unterminated string literal
+      A missing closing quote:  print("hello)
+      Fix: print("hello")
+  invalid syntax. Maybe you meant '==' ...
+      if x = 5:   ->  if x == 5:      (= assigns, == compares)
+  expected ':'
+      if x > 5    ->  if x > 5:       (if / elif / else / while / for / def
+                                        all need a colon)
+  It's  inside  '...'
+      print('It's ok')  ->  print("It's ok")
+
+
+IndentationError
+----------------
+  expected an indented block
+      The line after if / for / while / def must be pushed in by 4 spaces.
+          if x > 5:
+          print("big")          <- wrong
+          if x > 5:
+              print("big")      <- right
+  unexpected indent
+      A line is pushed in for no reason. Line it up with its neighbours.
+
+
+NameError: name 'xyz' is not defined
+------------------------------------
+  * A typo or wrong capitals: Print, True vs true, total vs Total
+  * You used a variable BEFORE creating it
+  * The variable was created INSIDE a function (local) and you used it
+    outside. Return it instead.
+  * You forgot  import sys  (or import math, ...)
+
+
+TypeError  (the right idea, but the wrong TYPE of value)
+--------------------------------------------------------
+  can only concatenate str (not "int") to str
+      "Age: " + 20     ->  "Age: " + str(20)   or   f"Age: {20}"
+  unsupported operand type(s) for -: 'int' and 'str'
+      You did maths with input() text. Convert it:  int(input("..."))
+  write() argument must be str, not float
+      f.write(3.14)    ->  f.write(str(3.14))
+  'tuple' object does not support item assignment
+      Tuples cannot change. Make a new tuple instead.
+  'int' object is not iterable
+      for n in 1234:   ->  for n in str(1234):   or   for n in range(1234):
+  'set' object is not subscriptable
+      Sets have no index (s[0]). Loop over the set instead.
+  '<' not supported between instances of 'float' and 'str'
+      You sorted or compared numbers with text.
+
+
+ValueError  (the right type, but a bad value)
+---------------------------------------------
+  invalid literal for int() with base 10: 'abc'   (or '3.5')
+      The text cannot be turned into a whole number. Use float() for
+      decimals, and check what the user typed.
+  list.remove(x): x not in list
+      Check first:  if x in my_list:  my_list.remove(x)
+  too many values to unpack / not enough values to unpack
+      a, b = something  needs something to hold EXACTLY 2 items.
+      For "colony,note" lines, use  split(",", 1)
+
+
+IndexError: list index out of range
+-----------------------------------
+  You asked for a position that does not exist. A list of 3 items has
+  the indexes 0, 1, 2 (NOT 3). The last item is my_list[-1].
+  It often comes from sys.argv[1] when you ran the program WITHOUT
+  arguments.
+
+
+KeyError: 'coffee'
+------------------
+  That key is not in the dictionary. Check the spelling and capitals, or
+  test first:  if "coffee" in prices:
+
+
+ZeroDivisionError: division by zero
+-----------------------------------
+  You divided by 0 (or by a variable that is 0).
+
+
+FileNotFoundError: [Errno 2] No such file or directory
+------------------------------------------------------
+  * The terminal is in a different folder from the file.
+    Use  cd  to go to the right folder, or check the "data\" folder is
+    next to your .py file.
+  * A typo in the file name.
+  * You opened with "r" a file that does not exist yet.
+
+
+"can't open file ... [Errno 2]"  (when running python something.py)
+--------------------------------------------------------------------
+  The terminal is not in the folder where the .py file lives.
+  Use  cd "folder name"  then run again.  dir  lists the files here.
+
+
+ModuleNotFoundError: No module named 'station_math'
+---------------------------------------------------
+  Your own module must be in the SAME folder as the file that imports
+  it, and you import it WITHOUT .py:   import station_math
+
+
+THE PROGRAM NEVER STOPS (an infinite loop)
+------------------------------------------
+  Press Ctrl + C in the terminal to stop it.
+  Then check: does something INSIDE the while loop change the condition?
+  (Usually you forgot to ask input() again inside the loop.)
+
+
+NO ERROR, BUT THE WRONG ANSWER
+------------------------------
+  * 0.30000000000000004  -> the float wall. Format with f"{x:.2f}"
+  * "135" instead of 18  -> you joined text instead of adding numbers.
+    Convert with int().
+  * A list "did not change" after  for n in nums: n = n * 2
+    -> loop over the indexes instead:  nums[i] = nums[i] * 2
+  * The if never runs -> check and/or, > vs >=, and "1" vs 1.
+  * The output shows None -> the function used print instead of return.

@@ -1,0 +1,71 @@
+WEEK 4 - EXERCISE 5: THE CENSUS GRID
+====================================
+Solution code: 2_Solutions\ex5_census_grid.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+A grid (a table) of penguin counts:
+
+                  North Ridge  Seal Point  Windward
+                    col 0        col 1      col 2
+    Monday    row 0   242          182        210
+    Tuesday   row 1   245          185        213
+    Wednesday row 2   240          180        208
+
+In Python it is a LIST OF LISTS (one inner list per row):
+    grid = [[242, 182, 210],
+            [245, 185, 213],
+            [240, 180, 208]]
+
+1. Print Tuesday's row, and Seal Point's Tuesday number.
+2. Total for each COLONY (add DOWN each column) using loops.
+3. Total for each DAY (add ACROSS each row) in one comprehension.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+grid[row]        -> a whole row (a list)
+grid[row][col]   -> one number. Always ROW first, then COLUMN.
+
+    grid[1]      -> [245, 185, 213]      Tuesday
+    grid[1][1]   -> 185                  Tuesday, Seal Point
+
+
+STEP BY STEP
+------------
+1. print(grid[1])  and  print(grid[1][1])
+
+2. Column sums need TWO loops: an outer loop over each column, and an
+   inner loop going down the rows.
+
+       for col in range(3):           # 0, 1, 2  (each colony)
+           total = 0                  # reset for each colony!
+           for row in range(3):       # 0, 1, 2  (each day)
+               total = total + grid[row][col]
+           print(colony_names[col], total)
+
+   Trace for col = 0:  0 + 242 = 242,  + 245 = 487,  + 240 = 727
+
+3. Row sums are easy, because each row is already a list:
+       day_totals = [sum(row) for row in grid]
+   -> [634, 643, 628]
+
+
+EXPECTED OUTPUT
+---------------
+Tuesday: [245, 185, 213]
+Seal Point, Tuesday: 185
+North Ridge: 727
+Seal Point: 547
+Windward: 631
+Day totals: [634, 643, 628]
+
+
+COMMON MISTAKES
+---------------
+* grid[1, 1] -> TypeError. Use two sets of brackets: grid[1][1].
+* Putting total = 0 OUTSIDE the outer loop. Then the totals keep adding
+  on top of each other: 727, 1274, 1905.
+* Mixing up rows and columns: [sum(row) for row in grid] gives DAY totals,
+  not colony totals.

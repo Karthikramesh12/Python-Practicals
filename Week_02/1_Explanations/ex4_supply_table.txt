@@ -1,0 +1,57 @@
+WEEK 2 - EXERCISE 4: THE SUPPLY TABLE
+=====================================
+Solution code: 2_Solutions\ex4_supply_table.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Store 3 items and 3 weights in 6 variables. Print a neatly aligned table:
+
+    ITEM         WEIGHT KG
+    fuel drum       180.00
+    ration box       22.50
+    med kit           9.75
+
+Use the format specs :<12 and :>9.2f, with ONE space between the columns.
+
+
+FORMAT SPECS - THE KEY IDEA
+---------------------------
+Inside f-string braces, a colon adds formatting:  {value:spec}
+
+    :<12     left-align in a box 12 characters wide
+    :>9      right-align in a box 9 characters wide
+    :^10     centre in a box 10 wide
+    :.2f     a float with exactly 2 decimals
+    :>9.2f   right-align, width 9, 2 decimals (perfect for money)
+
+Picture it with dots for the spaces:
+    f"{'fuel drum':<12}"   -> "fuel drum..."    (9 letters + 3 spaces = 12)
+    f"{180.0:>9.2f}"       -> "...180.00"       (3 spaces + 6 characters = 9)
+
+
+STEP BY STEP
+------------
+    item1 = "fuel drum"
+    weight1 = 180.0
+    ... (item2, weight2, item3, weight3)
+
+    print(f"{'ITEM':<12} {'WEIGHT KG':>9}")    # header, same widths
+    print(f"{item1:<12} {weight1:>9.2f}")
+    print(f"{item2:<12} {weight2:>9.2f}")
+    print(f"{item3:<12} {weight3:>9.2f}")
+
+For the header, the text goes in single quotes INSIDE the f-string:
+{'ITEM':<12}. Text can be aligned too.
+
+Why .2f? 22.5 would print as "22.5". With .2f it prints as "22.50", so
+every decimal point lines up.
+
+
+COMMON MISTAKES
+---------------
+* {weight1:9.2f>} -> error. Order: alignment, then width, then precision.
+* Different widths in the header and the rows -> the columns do not line
+  up.
+* Using "f" on a string: {'ITEM':>9.2f} -> ValueError. .2f is only for
+  numbers.

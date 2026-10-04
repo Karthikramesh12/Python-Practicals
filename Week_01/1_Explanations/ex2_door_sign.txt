@@ -1,0 +1,58 @@
+WEEK 1 - EXERCISE 2: THE STATION DOOR SIGN
+==========================================
+Solution code: 2_Solutions\ex2_door_sign.py
+
+
+WHAT THE QUESTION IS ASKING
+---------------------------
+Using ONLY ONE print() and one string, produce:
+    ==============================
+       FARPOINT STATION
+       "South of everywhere"
+       Crew: 44   Winter: yes
+    ==============================
+The = lines must come from "=" * 30, not 30 typed characters.
+
+
+WHAT YOU NEED TO KNOW
+---------------------
+ESCAPE CHARACTERS: a backslash gives the next character a special meaning:
+    \n   new line
+    \t   tab
+    \"   a real " inside a "..." string
+    \'   a real ' inside a '...' string
+    \\   a real backslash
+
+STRING MATHS:
+    "ab" + "cd"   -> "abcd"          + joins
+    "=" * 5       -> "====="         * repeats
+
+
+STEP BY STEP
+------------
+Build the ONE string piece by piece:
+    "=" * 30                         the top line
+    + "\n   FARPOINT STATION"        new line, 3 spaces, text
+    + "\n   \"South of everywhere\"" new line, 3 spaces, quoted text
+    + "\n   Crew: 44   Winter: yes"
+    + "\n"
+    + "=" * 30                       the bottom line
+
+All in one line of code:
+    print("=" * 30 + "\n   FARPOINT STATION\n   \"South of everywhere\"\n   Crew: 44   Winter: yes\n" + "=" * 30)
+
+Why \" ? The string starts with ". If you wrote "South of everywhere"
+without backslashes, Python would think the string ENDS at the second ".
+
+
+ANSWER (a)
+----------
+"=" * 30 is string multiplication. It is the same * symbol, doing a
+different job because the left side is a string.
+
+
+COMMON MISTAKES
+---------------
+* Using several print() calls. The rule is ONE.
+* Forgetting the \ before the inner quotes -> SyntaxError.
+* Writing /n instead of \n. It is a BACKslash.
